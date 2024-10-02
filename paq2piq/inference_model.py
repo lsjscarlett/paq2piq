@@ -40,13 +40,18 @@ class InferenceModel:
     blk_size = 20, 20
     categories = 'Bad', 'Poor', 'Fair', 'Good', 'Excellent'
 
-    def __init__(self, model, path_to_model_state: Path):
+    def __init__(self, model, path_to_model_state: Path = None):
         self.transform = Transform().val_transform
-        model_state = torch.load(path_to_model_state, map_location=lambda storage, loc: storage)
         self.model = model
-        self.model.load_state_dict(model_state["model"])
         self.model = self.model.to(device)
         self.model.eval()
+
+        # Only load model state if path_to_model_state is provided
+        if path_to_model_state is not None:
+            model_state = torch.load(path_to_model_state, map_location=lambda storage, loc: storage)
+            self.model.load_state_dict(model_state["model"])
+
+
 
     def predict_from_file(self, image_path: Path, render=False):
         image = default_loader(image_path)
@@ -92,5 +97,5 @@ class InferenceModel:
         category = self.categories[int(x//20)]
         return {"global_score": global_score,
                 "normalized_global_score": x,
-                "local_scores": local_scores,
+                #"local_scores": local_scores,
                 "category": category}

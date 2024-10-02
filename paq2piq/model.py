@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import torchvision as tv
 from torchvision.ops import RoIPool, RoIAlign
+from torchvision.models import ResNet18_Weights
 import numpy as np
 
 """
@@ -40,8 +41,8 @@ class RoIPoolModel(nn.Module):
 
     def __init__(self, backbone='resnet18'):
         super().__init__()
-        if backbone is 'resnet18':
-            model = tv.models.resnet18(pretrained=True)
+        if backbone == 'resnet18':
+            model = tv.models.resnet18(weights='ResNet18_Weights.DEFAULT')
             cut = -2
             spatial_scale = 1/32
 
