@@ -97,5 +97,5 @@ class InferenceModel:
         category = self.categories[int(x//20)]
         return {"global_score": global_score,
                 "normalized_global_score": x,
-                #"local_scores": local_scores,
+                "local_scores": local_scores,
                 "category": category}

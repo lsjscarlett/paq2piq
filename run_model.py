@@ -31,5 +31,5 @@ def main(input_path):
         print(f"{input_path} is not a valid file or directory.")
 
 if __name__ == "__main__":
-    input_path = 'images/photos_sherry/Restaurant'
+    input_path = 'imagepath'
     main(input_path)
