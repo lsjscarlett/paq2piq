@@ -13,7 +13,7 @@ Install the required packages
 ```bash
 pip install -r requirements.txt
 ```
-Download the pre-trained package from  [GitHub Repository]([GitHub Repository](https://github.com/your-repo) 
+Download the pre-trained package from  [GitHub Repository]([GitHub Repository](https://github.com/your-repo) to the repository
 ) 
 
 ## Usage

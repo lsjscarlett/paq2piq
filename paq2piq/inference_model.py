@@ -83,6 +83,8 @@ class InferenceModel:
 
         local_scores = np.reshape(t[1:], self.blk_size)
         global_score = t[0]
+        # Calculate the average of local scores
+        average_local_score = np.mean(local_scores)
 
         # normalize the global score
         x_mean, std_left, std_right = 72.59696108881171, 7.798274017370107, 4.118047289170692
@@ -97,5 +99,6 @@ class InferenceModel:
         category = self.categories[int(x//20)]
         return {"global_score": global_score,
                 "normalized_global_score": x,
-                "local_scores": local_scores,
+                #"local_scores": local_scores,
+                "average_local_score": average_local_score,
                 "category": category}
